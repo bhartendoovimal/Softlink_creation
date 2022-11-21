@@ -1,0 +1,39 @@
+# In 10.171.120.229 server we already created  folder on mount point so no need to recreate , just verify--
+ 
+ls -tlr /home/bhartendoo/test     --> orig folder which we delete later
+ls -tlr /home/bhartendoo/soft_link --> this folder will be SF folder
+
+### create softlink if required
+##check copy all files there 
+cd /home/bhartendoo/
+du -skh test
+
+ 
+## if any thing required then copy or leave 
+cp -r  /home/bhartendoo/test/* /home/bhartendoo/soft_link
+
+## remvoe existing folder & create solftlink
+cd /home/bhartendoo/
+ls -tlr test
+ 
+rm -r  test
+rmdir test
+
+
+## there should no folder test 
+cd /home/bhartendoo/
+ls -tlr test
+
+---soft link created
+ln -sf /home/bhartendoo/soft_link/ /home/bhartendoo/test
+
+
+### verify soft link  :  test->  /home/bhartendoo/soft_link/
+cd /home/bhartendoo/
+ls -tlr test
+cd test
+ls -tlr 
+ 
+--- delete softlink
+rm -i test
+rm: remove symbolic link 'test'? y
